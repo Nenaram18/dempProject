@@ -30,7 +30,8 @@ const Splash = ({ navigation }) => {
         try {
             const jsonValue = await AsyncStorage.getItem('USERINFO');
             if (jsonValue != null) {
-                navigation.navigate('TabNavigation')
+
+                navigation.reset({ index: 0, routes: [{ name: "TabNavigation" }] });
                 console.log("Value found in async store : ", jsonValue);
             } else {
                 console.log("Async store empty");
