@@ -26,8 +26,6 @@ const Splash = ({ navigation }) => {
 
 
     async function getUserDetail() {
-        navigation.reset({ index: 0, routes: [{ name: "Login" }] });
-        return
         try {
             const jsonValue = await AsyncStorage.getItem('AUTHTOKEN');
             if (jsonValue != null) {

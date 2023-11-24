@@ -13,8 +13,7 @@ import {
 
 import ProgressLoader from 'rn-progress-loader';
 import ApiCaller from '../../api/ApiCaller';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import NetInfo from '@react-native-community/netinfo';
 
 const TradeList = () => {
     const [selectedToggle, setSelectedToggle] = useState(1)
@@ -42,7 +41,14 @@ const TradeList = () => {
 
 
     useEffect(() => {
-        getTradeListApi("ongoing")
+        NetInfo.fetch().then((state) => {
+            if (state.isConnected) {
+                getTradeListApi("ongoing")
+            } else {
+                Alert.alert("Error", "Check your internet connection")
+            }
+        })
+
     }, [])
 
 
