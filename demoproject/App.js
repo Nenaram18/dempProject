@@ -4,8 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Splash from './src/screens/stack/Splash';
 import Login from './src/screens/stack/Login';
-import Register from './src/screens/stack/Register';
-import TabNavigation from './src/screens/tab/TabNavigation';
+import TradeList from './src/screens/stack/TradeList';
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -16,8 +15,7 @@ const App = () => {
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="TabNavigation" component={TabNavigation} />
+        <Stack.Screen name="TradeList" component={TradeList} />
       </Stack.Navigator>
     </NavigationContainer>
   )

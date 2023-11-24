@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Animated } from 'react-native'
 import React, { useEffect, useRef } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
 const Splash = ({ navigation }) => {
@@ -27,11 +26,13 @@ const Splash = ({ navigation }) => {
 
 
     async function getUserDetail() {
+        navigation.reset({ index: 0, routes: [{ name: "Login" }] });
+        return
         try {
-            const jsonValue = await AsyncStorage.getItem('USERINFO');
+            const jsonValue = await AsyncStorage.getItem('AUTHTOKEN');
             if (jsonValue != null) {
 
-                navigation.reset({ index: 0, routes: [{ name: "TabNavigation" }] });
+                navigation.reset({ index: 0, routes: [{ name: "TradeList" }] });
                 console.log("Value found in async store : ", jsonValue);
             } else {
                 console.log("Async store empty");
@@ -47,7 +48,7 @@ const Splash = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center' }}>
-            <AnimatedText style={{ fontSize, color: 'white', fontWeight: 'bold' }}>Genefied</AnimatedText>
+            <AnimatedText style={{ fontSize, color: 'white', fontWeight: 'bold' }}>FinoWise</AnimatedText>
         </View>
     )
 }
